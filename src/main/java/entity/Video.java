@@ -13,7 +13,8 @@ public class Video {
     private String play;//播放量
     private String barrage;//弹幕
     private String comment;//评论
-    private double fluency;//影响力
+    //影响力：硬币+收藏+播放量+弹幕+评论
+    private double fluency;
 
     public Video(String id, String title, String author, String category, String coin,
                  String favorite, String play, String barrage, String comment) {
@@ -26,7 +27,6 @@ public class Video {
         this.play = play;
         this.barrage = barrage;
         this.comment = comment;
-        this.fluency = 0;//此处计算影响力
     }
 
     public String getId() {
