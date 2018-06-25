@@ -8,16 +8,19 @@ public class Video {
     private String title;//标题
     private String author;//作者
     private String category;//类别
-    private String coin;//硬币
-    private String favorite;//收藏
-    private String play;//播放量
-    private String barrage;//弹幕
-    private String comment;//评论
+    private int coin;//硬币
+    private int favorite;//收藏
+    private int play;//播放量
+    private int barrage;//弹幕
+    private int comment;//评论
     //影响力：硬币+收藏+播放量+弹幕+评论
     private double fluency;
 
-    public Video(String id, String title, String author, String category, String coin,
-                 String favorite, String play, String barrage, String comment) {
+    public Video() {
+    }
+
+    public Video(String id, String title, String author, String category, int coin,
+                 int favorite, int play, int barrage, int comment) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -61,43 +64,43 @@ public class Video {
         this.category = category;
     }
 
-    public String getCoin() {
+    public int getCoin() {
         return coin;
     }
 
-    public void setCoin(String coin) {
+    public void setCoin(int coin) {
         this.coin = coin;
     }
 
-    public String getFavorite() {
+    public int getFavorite() {
         return favorite;
     }
 
-    public void setFavorite(String favorite) {
+    public void setFavorite(int favorite) {
         this.favorite = favorite;
     }
 
-    public String getPlay() {
+    public int getPlay() {
         return play;
     }
 
-    public void setPlay(String play) {
+    public void setPlay(int play) {
         this.play = play;
     }
 
-    public String getBarrage() {
+    public int getBarrage() {
         return barrage;
     }
 
-    public void setBarrage(String barrage) {
+    public void setBarrage(int barrage) {
         this.barrage = barrage;
     }
 
-    public String getComment() {
+    public int getComment() {
         return comment;
     }
 
-    public void setComment(String comment) {
+    public void setComment(int comment) {
         this.comment = comment;
     }
 
