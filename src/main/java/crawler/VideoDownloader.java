@@ -28,17 +28,17 @@ public class VideoDownloader {
         try
         {
             doc=Jsoup.connect(downloadAddress).timeout(3000).get();
-            Elements links = doc.getElementsByTag("a");
+            Elements links = doc.getElementsByTag("a");//得到所有链接地址
             for (Element link : links)
             {
-                String linkHref = link.attr("abs:href");
+                String linkHref = link.attr("abs:href");//得到下载页面的绝对地址
                 String linkText = link.text();
                 boolean mp4 = true;
                 if(linkText.toLowerCase().contains("mp4")&&linkText.contains("("))
                 {
                     mp4 = false;
-                    filename=linkHref;//动态保存文件名
-                    downloadUrl=AnalyseWebPage(linkHref, linkText);
+                    filename=link.attr("data-download");//保存文件名
+                    downloadUrl=AnalyseWebPage(linkHref, linkText);//得到url
                     isdownLoad = downloadWithPath(filePath, filename, downloadUrl);
                 }
                 else if(linkHref.toLowerCase().contains("download")&&linkHref.toLowerCase().contains("cid")&&mp4==false)
@@ -72,6 +72,7 @@ public class VideoDownloader {
             String linkText1 = downloadlink.text();
             if(linkText1.contains("普通下载"))
             {
+                //普通下载可能是个javascript脚本
                 System.out.printf("%s %s\n",linkHref1,linkText1);
                 return linkHref1;
             }
@@ -92,7 +93,7 @@ public class VideoDownloader {
         {
             filename+=".flv";
         }
-        File videofile=new File(file+filename.substring(filename.lastIndexOf("/")));
+        File videofile=new File(filename);//File(file+filename.substring(filename.lastIndexOf("/")));
         /*
          * 下载视频步骤
          */
@@ -143,13 +144,13 @@ public class VideoDownloader {
             List<Video> vl = getTopFive("");
             for(Video vd : vl)
             {
-                if(downloadVideo("http://www.bilibilijj.com/video/av.get"+vd.getId(), "video/"))
+                if(downloadVideo("http://www.bilibilijj.com/video/av"+vd.getId(), "video/"))
                 {
                     System.out.println(vd.getTitle()+" 下载完成！");
                 }
                 else
                 {
-                    System.out.println(vd.getTitle()+" 下载失败,请检查原因！");
+                    System.out.println(vd.getTitle()+" 下载失败,请检查网络！");
                 }
             }
 
