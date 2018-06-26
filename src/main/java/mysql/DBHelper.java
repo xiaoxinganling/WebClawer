@@ -16,11 +16,11 @@ public class DBHelper
     //返回数据库连接对象
     private static Connection getConnection()
     {
-        String url = "jdbc:mysql://localhost:3306/bilibili?serverTimezone=GMT%2B8";
+        String url = "jdbc:mysql://localhost:3306/bilibili?useUnicode=true&characterEncoding=UTF-8";
         String username = "root";
         String password = "zz123456";
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             return DriverManager.getConnection(url,username,password);
 
         }catch (Exception e)
